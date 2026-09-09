@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="description" content="TV Evolution 3D — CRT vertical slice reconstructed from Sony BA-4D service documentation."/>
+<title>TV Evolution 3D — CRT Lab</title>
+<link rel="stylesheet" href="./styles.css"/>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.185.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.185.0/examples/jsm/"}}</script>
+</head>
+<body>
+<div class="app">
+<header class="topbar">
+  <div class="brand"><span class="mark">3D</span><div><b>TV Evolution</b><small>CRT engineering lab</small></div></div>
+  <nav class="eras">
+    <button disabled>Cơ học</button><button class="active">CRT</button><button disabled>Plasma</button><button disabled>LCD</button><button disabled>OLED</button><button disabled>Mini‑LED</button><button disabled>MicroLED</button>
+  </nav>
+  <div class="top-actions"><span id="renderBadge">Three.js · loading</span><button id="sourceBtn">Sources</button></div>
+</header>
+<main class="stage">
+  <div id="canvasHost" class="canvas"></div>
+  <section class="titleblock">
+    <div class="kicker">SONY BA‑4D · REPRESENTATIVE RECONSTRUCTION</div>
+    <h1>See the machine,<br/>not a diagram.</h1>
+    <p>KV‑27S42 (1999) là mốc tham chiếu cho cấu trúc CRT. Exterior 3D là asset tham khảo; nội thất được tái dựng theo service manual BA‑4D và được đánh dấu rõ là reconstruction.</p>
+    <div class="specs"><span><i>Tube</i><b>27″ Trinitron</b></span><span><i>Power</i><b>140 W</b></span><span><i>Mass</i><b>39 kg</b></span></div>
+  </section>
+
+  <aside class="inspector">
+    <div class="inspector-head"><div><small>SELECTED COMPONENT</small><h2 id="partName">Rear cabinet</h2></div><button id="focusBtn">Focus</button></div>
+    <p id="partSummary">Lớp vỏ ngoài bảo vệ CRT và chassis, đồng thời tạo khoảng cách an toàn quanh phần cao áp.</p>
+    <dl>
+      <div><dt>What it does</dt><dd id="partFunction"></dd></div>
+      <div><dt>Physical construction</dt><dd id="partMaterial"></dd></div>
+      <div><dt>Evidence level</dt><dd id="partEvidence"></dd></div>
+    </dl>
+    <div class="parts" id="parts"></div>
+  </aside>
+
+  <section class="dock">
+    <div class="explode"><div class="dock-label"><span>Disassembly</span><b id="explodePct">0%</b></div><input id="explode" type="range" min="0" max="100" value="0"/><div class="ticks"><span>Closed</span><span>Service</span><span>Exploded</span></div></div>
+    <button id="xrayBtn">X‑Ray</button><button id="beamBtn">Electron beam</button><button id="rotateBtn">Auto rotate</button><button id="resetBtn">Reset</button>
+  </section>
+
+  <div class="hint">Drag to orbit · wheel to zoom · click a component</div>
+  <a class="credit" href="https://sketchfab.com/3d-models/retro-television-e938241a182a4229ad48a1fc589e676e" target="_blank" rel="noreferrer">Exterior reference · Tom Seddon · CC BY 4.0</a>
+  <div id="loading" class="loading"><span></span><b>Loading CRT reference model</b></div>
+
+  <dialog id="sourcesDialog">
+    <button class="close" id="closeSources">×</button>
+    <small>SOURCE DISCIPLINE</small><h3>What is verified vs reconstructed?</h3>
+    <p><b>Verified model reference:</b> Sony KV‑27S42, BA‑4D chassis, service manual issued 1999. The manual documents disassembly, circuit-board locations and exploded views.</p>
+    <p><b>Exterior 3D:</b> “Retro Television” by Tom Seddon, CC BY 4.0. It is used as a visual reference shell and is <em>not</em> claimed to be an exact KV‑27S42 scan.</p>
+    <p><b>Interior geometry:</b> engineering reconstruction based on CRT topology and BA‑4D board layout. It is not an exact CAD/BOM reproduction.</p>
+    <a href="https://consolemods.org/wiki/images/a/a6/Sony_BA-4D_Chassis.pdf" target="_blank" rel="noreferrer">Open BA‑4D service manual ↗</a>
+  </dialog>
+</main>
+</div>
+<script type="module" src="./app.js"></script>
+</body>
+</html>
